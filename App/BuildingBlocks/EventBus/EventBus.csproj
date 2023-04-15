@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PresenterService.Domain.Core\PresenterService.Domain.Core.csproj" />
-  </ItemGroup>
-
 </Project>
