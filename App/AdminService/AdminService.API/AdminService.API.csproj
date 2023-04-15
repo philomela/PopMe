@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\Application\AdminService.Application\AdminService.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\AdminService.Infrastructure\AdminService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
