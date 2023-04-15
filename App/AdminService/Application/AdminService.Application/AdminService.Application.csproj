@@ -11,4 +11,16 @@
     <ProjectReference Include="..\..\Domain\AdminService.Domain.Interfaces\AdminService.Domain.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Mappings\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
 </Project>
