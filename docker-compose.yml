@@ -1,0 +1,18 @@
+version: "3.7"
+
+networks:
+    popme-poker-network:
+
+services: 
+    admin-service:
+        container_name: adminservice
+        build: ./App/AdminService/AdminService.API/
+        networks:
+            - popme-poker-network
+
+    presenter-service:
+        container_name: presenterservice
+        build: ./App/PresenterService/PresenterService.API/
+        restart: always
+        networks:
+            - popme-poker-network
