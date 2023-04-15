@@ -1,0 +1,18 @@
+version: "3.7"
+
+networks:
+    planning-poker-network:
+
+services: 
+    AdminService:
+        container_name: AdminService
+        build: ./App/AdminService/AdminService.API
+        networks:
+            - planning-poker-network
+
+    PresenterService:
+        container_name: PresenterService
+        build: ./App/PresenterService/PresenterService.API
+        restart: always
+        networks:
+            - planning-poker-network
