@@ -8,8 +8,7 @@ namespace AdminService.Infrastructure;
 public class AdminDbContext : DbContext, IAdminDbContext
 {
     public DbSet<Admin> Admins { get; set; }
-    public DbSet<PresenterLink> PresenterLinks { get; set; }
-    public DbSet<ReceiverLink> ReceiverLinks { get; set; }
+    public DbSet<QrCode> QrCodes { get; set; }
 
     public AdminDbContext(DbContextOptions<AdminDbContext> options) :
         base(options)

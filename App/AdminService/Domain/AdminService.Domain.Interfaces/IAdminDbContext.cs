@@ -7,9 +7,7 @@ namespace AdminService.Domain.Interfaces
     {
         public DbSet<Admin> Admins { get; set; }
 
-        public DbSet<PresenterLink> PresenterLinks { get; set; }
-
-        public DbSet<ReceiverLink> ReceiverLinks { get; set; }
+        public DbSet<QrCode> QrCodes { get; set; }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
