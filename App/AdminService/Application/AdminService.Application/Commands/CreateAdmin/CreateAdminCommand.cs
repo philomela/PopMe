@@ -4,11 +4,7 @@ namespace AdminService.Application.Commands.CreateAdmin
 {
     public record CreateAdminCommand : IRequest<Guid>
     {
-        public CreateAdminCommand()
-        {
-
-        }
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string LastName { get; set; }
 

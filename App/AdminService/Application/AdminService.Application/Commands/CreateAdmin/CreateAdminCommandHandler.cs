@@ -22,6 +22,7 @@ public record CreateAdminCommandHandler : IRequestHandler<CreateAdminCommand, Gu
         };
 
         await _adminDbContext.Admins.AddAsync(admin);
+        await _adminDbContext.SaveChangesAsync(cancellationToken);
 
         return admin.Id;
     }

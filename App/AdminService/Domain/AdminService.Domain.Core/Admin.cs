@@ -1,6 +1,6 @@
 ﻿namespace AdminService.Domain.Core;
 
-public class Admin
+public record Admin
 {
     public Guid Id { get; set; }
 

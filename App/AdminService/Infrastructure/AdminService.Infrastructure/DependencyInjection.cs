@@ -1,4 +1,6 @@
-﻿using AdminService.Domain.Interfaces;
+﻿using AdminService.Application.Common.Interfaces;
+using AdminService.Domain.Interfaces;
+using AdminService.Infrastructure.Clients;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,10 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IAdminDbContext>(provider => provider.GetService<AdminDbContext>());
+        services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>(provider 
+            => provider.GetService<SqlConnectionFactory>(connectionString));
+
+        services.AddTransient<IQrCodeClient<string>, QrCodeClient>();
 
         return services;
     }
