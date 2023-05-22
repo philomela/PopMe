@@ -1,9 +1,12 @@
 using AdminService.Application;
+using AdminService.Application.Commands.CreateAdmin;
+using AdminService.Application.Commands.GeneratePairQrCodes;
+using AdminService.Application.Queries.GetPairQrCodes;
 using AdminService.Infrastructure;
 using EventBus.Messages;
 using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,19 +23,25 @@ builder.Services.AddAppication();
 
 var app = builder.Build();
 
+app.MapGet("/", () => "Admin");
 
-app.MapPost("/createAdmin", );
+app.MapPost("/createAdmin", async([FromServices] IMediator mediator) => {
+    await mediator.Send(new CreateAdminCommand());
+});
 
-app.MapGet("/generateQrCode", async ([FromServices] IPublishEndpoint publishEndpoint) =>
+app.MapGet("/generatePairQrCode", async ([FromServices] IPublishEndpoint publishEndpoint, [FromServices] IMediator mediator) =>
 {
-    await publishEndpoint.Publish(new AdminGenerateCodeEvent()
+    var command = new GeneratePairQrCodesCommand();
+    await mediator.Send(command);
+
+    await publishEndpoint.Publish(new AdminGeneratedCodeEvent()
     {
-        Id = 1,
-        Code = "Test",
+        Id = Guid.NewGuid(),
+        PresenterData = command.PresenterData,
+        ReceiverData = command.ReceiverData,
     });
 
-    return HttpStatusCode.Created;
-
+    return await mediator.Send(new GetPairQrCodesQuery());
 });
 
 app.Run();

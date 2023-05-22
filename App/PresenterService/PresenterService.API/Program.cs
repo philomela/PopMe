@@ -1,5 +1,9 @@
 using EventBus.Common;
+using EventBus.Messages;
 using MassTransit;
+using MassTransit.Mediator;
+using MassTransit.Transports;
+using Microsoft.AspNetCore.Mvc;
 using PresenterService.API.EventBusConsumer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +17,7 @@ builder.Services.AddMassTransit(config => {
     config.UsingRabbitMq((ctx, cfg) => {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
-        cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c => {
+        cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataPresenterQueue, c => {
             c.ConfigureConsumer<AdminGenerateCodeConsumer>(ctx);
         });
     });
@@ -21,6 +25,16 @@ builder.Services.AddMassTransit(config => {
 
 var app = builder.Build();
 
-app.MapGet("/sendEventRabbitMq", () => "Hello World!");
+app.MapGet("/", () => "Presenter");
+//app.MapGet("/getPresenter", () => "Hello World!");
+//app.MapGet("/createPresenter", () => "Hello World!");
+app.MapGet("/updatePresenter", async([FromServices] IPublishEndpoint publishEndpoint) =>
+{
+    //var result = await mediator.Send(new UpdatePresenter())
+    await publishEndpoint.Publish(new UpdatedPresenterEvent()
+    {
+        Id = Guid.NewGuid()
+    });
+});
 
 app.Run();

@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flurl" Version="3.0.7" />
+    <PackageReference Include="Flurl.Http" Version="3.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\AdminService.Application\AdminService.Application.csproj" />
     <ProjectReference Include="..\..\Domain\AdminService.Domain.Core\AdminService.Domain.Core.csproj" />
     <ProjectReference Include="..\..\Domain\AdminService.Domain.Interfaces\AdminService.Domain.Interfaces.csproj" />
   </ItemGroup>
