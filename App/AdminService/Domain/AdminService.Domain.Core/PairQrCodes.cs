@@ -2,7 +2,7 @@
 
 public record PairQrCodes
 {
-    public Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; init; }
 
     public string PresenterDataBase64 { get; init; }
 

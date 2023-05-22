@@ -12,13 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMassTransit(config => {
 
-    config.AddConsumer<AdminGenerateCodeConsumer>();
+    config.AddConsumer<AdminGeneratedCodeConsumer>();
 
     config.UsingRabbitMq((ctx, cfg) => {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
         cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataPresenterQueue, c => {
-            c.ConfigureConsumer<AdminGenerateCodeConsumer>(ctx);
+            c.ConfigureConsumer<AdminGeneratedCodeConsumer>(ctx);
         });
     });
 });
