@@ -22,6 +22,6 @@ public class AdminDbContext : DbContext, IAdminDbContext
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
-       return  await SaveChangesAsync();
+       return  await base.SaveChangesAsync(cancellationToken);
     }
 }
