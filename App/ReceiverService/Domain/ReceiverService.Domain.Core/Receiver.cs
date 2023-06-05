@@ -1,5 +1,6 @@
 ﻿namespace ReceiverService.Domain.Core;
 
-public class Receiver
+public record Receiver
 {
+    public int MyProperty { get; set; }
 }

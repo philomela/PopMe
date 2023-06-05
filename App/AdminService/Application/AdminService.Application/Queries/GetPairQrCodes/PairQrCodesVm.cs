@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace AdminService.Application.Queries.GetPairQrCodes;
 
-public class PairQrCodesVm : IMapFrom<IEnumerable<PairQrCodes>>
+public class PairQrCodesVm : IMapFrom<PairQrCodes>
 {
     public string PresenterQrCodeImg { get; set; }
 

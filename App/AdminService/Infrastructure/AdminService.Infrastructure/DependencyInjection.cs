@@ -20,7 +20,7 @@ public static class DependencyInjection
 
         services.AddScoped<IAdminDbContext>(provider => provider.GetService<AdminDbContext>());
         services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>(provider 
-            => provider.GetService<SqlConnectionFactory>(connectionString));
+            => new SqlConnectionFactory(connectionString));
 
         services.AddTransient<IQrCodeClient<string>, QrCodeClient>();
 
