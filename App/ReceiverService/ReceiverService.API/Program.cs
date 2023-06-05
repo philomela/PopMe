@@ -6,17 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMassTransit(config => {
 
-    config.AddConsumer<AdminGenerateCodeConsumer>();
-    config.AddConsumer<UpdatePresenterConsumer>();
+    config.AddConsumer<AdminGeneratedCodeConsumer>();
+    config.AddConsumer<UpdatedPresenterConsumer>();
 
     config.UsingRabbitMq((ctx, cfg) => {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
         cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataReceiverQueue, c => {
-            c.ConfigureConsumer<AdminGenerateCodeConsumer>(ctx);
+            c.ConfigureConsumer<AdminGeneratedCodeConsumer>(ctx);
         });
         cfg.ReceiveEndpoint(EventBusConstants.UpdatePresenterReceiverQueue, c => {
-            c.ConfigureConsumer<UpdatePresenterConsumer>(ctx);
+            c.ConfigureConsumer<UpdatedPresenterConsumer>(ctx);
         });
     });
 });

@@ -1,10 +1,10 @@
 ﻿namespace EventBus.Messages;
 
-public class AdminGeneratedCodeEvent
+public record AdminGeneratedCodeEvent
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; init; }
 
-    public Guid PresenterData { get; set; }
+    public Guid PresenterData { get; init; }
 
-    public Guid ReceiverData { get; set; }
+    public Guid ReceiverData { get; init; }
 }
