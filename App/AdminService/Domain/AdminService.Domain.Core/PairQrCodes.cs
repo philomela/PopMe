@@ -2,9 +2,11 @@
 
 public record PairQrCodes
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
 
-    public string PresenterDataBase64 { get; init; }
+    public string PresenterDataBase64 { get; set; }
 
-    public string ReceiverDataBase64 { get; init; }
+    public string ReceiverDataBase64 { get; set; }
+
+    public Guid UniqKey { get; set; }
 }

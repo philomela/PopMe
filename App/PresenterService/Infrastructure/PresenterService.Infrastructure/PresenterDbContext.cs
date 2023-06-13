@@ -15,7 +15,8 @@ public class PresenterDbContext : DbContext, IPresenterDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new PresenterConfiguration());
-        //modelBuilder.ApplyConfiguration(new MemeConfiguration());
+        modelBuilder.ApplyConfiguration(new MemeConfiguration());
+        base.OnModelCreating(modelBuilder);
     }
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)

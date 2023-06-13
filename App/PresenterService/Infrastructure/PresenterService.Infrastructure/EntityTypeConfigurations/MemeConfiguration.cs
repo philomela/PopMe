@@ -4,12 +4,13 @@ using PresenterService.Domain.Core;
 
 namespace PresenterService.Infrastructure.EntityTypeConfigurations;
 
-/*internal class MemeConfiguration : IEntityTypeConfiguration<Meme>
+internal class MemeConfiguration : IEntityTypeConfiguration<Meme>
 {
     public void Configure(EntityTypeBuilder<Meme> builder)
     {
         builder.ToTable(nameof(Meme));
         builder.HasKey(m => m.Id);
+        builder.Property(m => m.TextСongratulations);
+        builder.Property(m => m.VideoId);
     }
 }
-*/

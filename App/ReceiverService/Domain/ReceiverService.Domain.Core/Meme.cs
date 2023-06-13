@@ -2,9 +2,11 @@
 
 public record Meme
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
 
-    public string? TextСongratulations { get; init; }
+    public Receiver? Receiver { get; set; }
 
-    public Guid VideoId { get; init; }
+    public string? TextСongratulations { get; set; }
+
+    public Guid VideoId { get; set; }
 }

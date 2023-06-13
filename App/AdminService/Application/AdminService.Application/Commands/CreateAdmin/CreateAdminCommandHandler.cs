@@ -12,18 +12,16 @@ public record CreateAdminCommandHandler : IRequestHandler<CreateAdminCommand, Gu
         => _adminDbContext = adminDbContext; 
     public async Task<Guid> Handle(CreateAdminCommand request, CancellationToken cancellationToken)
     {
-        var admin = new Admin()
+        await _adminDbContext.Admins.AddAsync(new ()
         {
             Id = request.Id,
             LastName = request.LastName,
             Name = request.Name,
             MiddleName = request.MiddleName,
             Email = request.Email,
-        };
-
-        await _adminDbContext.Admins.AddAsync(admin);
+        });
         await _adminDbContext.SaveChangesAsync(cancellationToken);
 
-        return admin.Id;
+        return request.Id;
     }
 }

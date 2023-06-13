@@ -1,10 +1,11 @@
 ﻿namespace PresenterService.Domain.Core;
 
-/*public record Meme
+public record Meme
 {
-    public Guid Id { get; init; }
-    public Guid PresenterId { get; init; }
+    public Guid Id { get; set; }
+    public Presenter? Presenter { get; set; }
 
-    //public Presenter Presenter { get; init; }
+    public string? TextСongratulations { get; set; }
+
+    public Guid VideoId { get; set; } 
 }
-*/

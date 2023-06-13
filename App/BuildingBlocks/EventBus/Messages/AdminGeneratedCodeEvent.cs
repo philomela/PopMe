@@ -7,4 +7,6 @@ public record AdminGeneratedCodeEvent
     public Guid PresenterData { get; init; }
 
     public Guid ReceiverData { get; init; }
+
+    public Guid UniqKey { get; init; }
 }

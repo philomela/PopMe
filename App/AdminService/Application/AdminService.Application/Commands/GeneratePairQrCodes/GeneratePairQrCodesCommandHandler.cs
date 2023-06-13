@@ -18,11 +18,12 @@ internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQ
         var presenterQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.PresenterData.ToString(), cancellationToken);
 
         await _adminDbContext.PairsQrCodes.AddAsync(
-            new PairQrCodes
+            new ()
             {
                 Id = request.Id,
                 ReceiverDataBase64 = await receiverQrCodeBase64,
-                PresenterDataBase64 = await presenterQrCodeBase64
+                PresenterDataBase64 = await presenterQrCodeBase64,
+                UniqKey = request.UniqKey,
             });
 
         await _adminDbContext.SaveChangesAsync(cancellationToken);
