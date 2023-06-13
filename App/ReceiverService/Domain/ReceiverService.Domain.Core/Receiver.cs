@@ -2,5 +2,15 @@
 
 public record Receiver
 {
-    public int MyProperty { get; set; }
+    public Guid Id { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? PhoneNumber { get; set; }
+
+    public DateTime? BirthDate { get; set; }
+
+    public Meme? Meme { get; set; }
+
+    public Guid UniqKey { get; set; }
 }

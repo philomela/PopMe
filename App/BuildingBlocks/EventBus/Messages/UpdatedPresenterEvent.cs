@@ -1,6 +1,11 @@
 ﻿namespace EventBus.Messages;
 
-public class UpdatedPresenterEvent
+public record UpdatedPresenterEvent
 {
-    public Guid Id { get; set; }
+    public Guid UniqKey { get; init; }
+    public string? NameReceiver { get; init; }
+
+    public string? PhoneNumberReceiver { get; init; }
+
+    public DateTime? BirthDateReceiver { get; init; }
 }

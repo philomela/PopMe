@@ -18,6 +18,7 @@ public class AdminDbContext : DbContext, IAdminDbContext
     {
         modelBuilder.ApplyConfiguration(new AdminConfiguration());
         modelBuilder.ApplyConfiguration(new PairQrCodesConfiguration());
+        base.OnModelCreating(modelBuilder);
     }
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
