@@ -1,9 +1,13 @@
 using EventBus.Common;
 using EventBus.Messages;
 using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PresenterService.API.EventBusConsumer;
 using PresenterService.Application;
+using PresenterService.Application.Commands.UpdatePresenter;
+using PresenterService.Application.Commands.UpdatePresenterDetail;
+using PresenterService.Application.Queries.GetPresenter;
 using PresenterService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,14 +17,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddMassTransit(config => {
+builder.Services.AddMassTransit(config =>
+{
 
     config.AddConsumer<AdminGeneratedCodeConsumer>();
 
-    config.UsingRabbitMq((ctx, cfg) => {
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
-        cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataPresenterQueue, c => {
+        cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataPresenterQueue, c =>
+        {
             c.ConfigureConsumer<AdminGeneratedCodeConsumer>(ctx);
         });
     });
@@ -28,18 +35,78 @@ builder.Services.AddMassTransit(config => {
 
 builder.Services.AddScoped<AdminGeneratedCodeConsumer>();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Presenter");
-//app.MapGet("/getPresenter", () => "Hello World!");
-//app.MapGet("/createPresenter", () => "Hello World!");
-app.MapGet("/updatePresenter", async([FromServices] IPublishEndpoint publishEndpoint) =>
+if (app.Environment.IsDevelopment())
 {
-    //var result = await mediator.Send(new UpdatePresenter())
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+/// <summary>
+/// Route Method / - get presenter name service.
+/// </summary>
+app.MapGet("/", () => "Presenter");
+
+/// <summary>
+/// Route GetPresenter - get presenter by Id.
+/// </summary>
+app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
+                                   [FromServices] IMediator mediator) =>
+{
+    return await mediator.Send(new GetPresenterQuery()
+    {
+        Id = id,
+    });
+}).WithName("GetPresenter")
+.WithOpenApi();
+
+/// <summary>
+/// Route UpdatePresenter - update presenter by Id.
+/// </summary>
+app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
+                                           [FromBody] UpdatePresenterCommand command,
+                                           [FromServices] IPublishEndpoint publishEndpoint,
+                                           [FromServices] IMediator mediator) =>
+{
+    if (id != command.Id)
+        return Results.BadRequest();
+      
+    var uniqKey = await mediator.Send(command);
     await publishEndpoint.Publish(new UpdatedPresenterEvent()
     {
-        Id = Guid.NewGuid()
+        NameReceiver = command.NameReceiver,
+        PhoneNumberReceiver = command.PhoneNumberReceiver,
+        BirthDateReceiver = command.BirthDateReceiver,
+        UniqKey = uniqKey
+    }); 
+    return Results.NoContent();
+}).WithName("UpdatePresenter")
+.WithOpenApi();
+
+/// <summary>
+/// Route UpdatePresenterDetail - update presenter detail by Id.
+/// </summary>
+app.MapPut("/updatePresenterDetail/{id}", async ([FromRoute] Guid id,
+                                                 [FromBody] UpdatePresenterDetailCommand command,
+                                                 [FromServices] IPublishEndpoint publishEndpoint,
+                                                 [FromServices] IMediator mediator) =>
+{
+    if (id != command.Id)
+        return Results.BadRequest();
+
+    var uniqKey = await mediator.Send(command);
+    await publishEndpoint.Publish(new UpdatedPresenterDetailEvent()
+    {
+        TextCongratulations= command.TextCongratulations,
+        VideoId = command.VideoId,
+        UniqKey = uniqKey
     });
-});
+    return Results.NoContent();
+}).WithName("UpdatePresenterDetail")
+.WithOpenApi();
 
 app.Run();

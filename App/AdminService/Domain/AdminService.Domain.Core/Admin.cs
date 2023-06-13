@@ -2,15 +2,15 @@
 
 public record Admin
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
 
-    public string NickName { get; init; }
+    public string NickName { get; set; }
 
-    public string Name { get; init; }
+    public string Name { get; set; }
 
-    public string LastName { get; init; }
+    public string LastName { get; set; }
 
-    public string MiddleName { get; init; }
+    public string MiddleName { get; set; }
 
-    public string Email { get; init; }
+    public string Email { get; set; }
 }

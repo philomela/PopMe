@@ -15,6 +15,7 @@ public class AdminGeneratedCodeConsumer : IConsumer<AdminGeneratedCodeEvent>
         await _mediator.Send(new CreatePresenterCommand()
         {
             Id = context.Message.PresenterData,
+            UniqKey = context.Message.UniqKey
         });
 
         Console.WriteLine($"{context.Message.Id}: {context.Message.PresenterData}"); //Added loger

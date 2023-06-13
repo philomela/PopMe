@@ -9,4 +9,6 @@ public record GeneratePairQrCodesCommand : IRequest<Unit>
     public Guid PresenterData { get; init; } = Guid.NewGuid();
 
     public Guid ReceiverData { get; init; } = Guid.NewGuid();
+
+    public Guid UniqKey { get; init; } = Guid.NewGuid();
 }

@@ -12,5 +12,6 @@ internal class PairQrCodesConfiguration : IEntityTypeConfiguration<PairQrCodes>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.PresenterDataBase64);
         builder.Property(x => x.ReceiverDataBase64);
+        builder.Property(x => x.UniqKey);
     }
 }
