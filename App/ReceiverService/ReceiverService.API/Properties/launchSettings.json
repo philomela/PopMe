@@ -3,16 +3,17 @@
     "ReceiverService.API": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:53752;http://localhost:53753",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:53752;http://localhost:53753"
+      "dotnetRunMessages": true
     },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {},
       "publishAllPorts": true,
       "useSSL": true
     }
