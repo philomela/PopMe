@@ -3,10 +3,10 @@
     "AdminService.API": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:53739;http://localhost:53740",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:53739;http://localhost:53740"
+      }
     }
   }
 }
