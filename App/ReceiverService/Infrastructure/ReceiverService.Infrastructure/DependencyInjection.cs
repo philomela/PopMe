@@ -19,7 +19,7 @@ public static class DependencyInjection
 
         services.AddScoped<IReceiverDbContext>(provider => provider.GetService<ReceiverDbContext>());
 
-        services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>(provider
+        services.AddScoped<ISqlConnectionFactory, SqlConnectionFactory>(provider
             => new SqlConnectionFactory(connectionString));
 
         return services;

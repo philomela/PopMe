@@ -21,6 +21,7 @@ internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQ
             new ()
             {
                 Id = request.Id,
+                CreateDate = request.CreateDate,
                 ReceiverDataBase64 = await receiverQrCodeBase64,
                 PresenterDataBase64 = await presenterQrCodeBase64,
                 UniqKey = request.UniqKey,

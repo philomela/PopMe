@@ -61,7 +61,8 @@ app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
     {
         Id = id,
     });
-}).WithName("GetPresenter")
+})
+.WithName("GetPresenter")
 .WithOpenApi();
 
 /// <summary>
@@ -84,7 +85,8 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
         UniqKey = uniqKey
     }); 
     return Results.NoContent();
-}).WithName("UpdatePresenter")
+})
+.WithName("UpdatePresenter")
 .WithOpenApi();
 
 /// <summary>
@@ -106,7 +108,8 @@ app.MapPut("/updatePresenterDetail/{id}", async ([FromRoute] Guid id,
         UniqKey = uniqKey
     });
     return Results.NoContent();
-}).WithName("UpdatePresenterDetail")
+})
+.WithName("UpdatePresenterDetail")
 .WithOpenApi();
 
 app.Run();
