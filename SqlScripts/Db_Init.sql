@@ -1,3 +1,5 @@
+/*Admin service db*/
+USE AdminServiceDb;
 CREATE TABLE [PairQrCodes] (
 	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
 	[CreateDate] [DateTime] NOT NULL,
@@ -7,10 +9,11 @@ CREATE TABLE [PairQrCodes] (
 )
 GO
 
-select * from [PairQrCodes]
-drop table [PairQrCodes]
+--select * from [PairQrCodes]
+--drop table [PairQrCodes]
 
 /*Presenter service db*/
+USE PresenterServiceDb;
 CREATE TABLE Presenter (
 	[Id] [uniqueidentifier] PRIMARY KEY,
 	[Name] [varchar](max) NULL,
@@ -26,18 +29,18 @@ CREATE TABLE Meme (
 )
 GO
 
-select * from Presenter
-select * from Meme
+--select * from Presenter
+--select * from Meme
 
-drop table Presenter
-drop table Meme
+--drop table Presenter
+--drop table Meme
 
-USE ReceiverServiceDb;
 /*Receiver service db*/
+USE ReceiverServiceDb;
 CREATE TABLE Receiver ( 
 	[Id] [uniqueidentifier] PRIMARY KEY,
 	[Name] [varchar](max) NULL,
-	[BirthDate] [datetime2] NULL,
+	[SurpriseDate] [datetime2] NULL,
 	[PhoneNumber] [varchar](13) NULL,
 	[UniqKey] [uniqueidentifier] UNIQUE NOT NULL
 )
@@ -50,11 +53,11 @@ CREATE TABLE Meme (
 )
 GO
 
-select * from Receiver
-select * from Meme
+--select * from Receiver
+--select * from Meme
 
-drop table Receiver
-drop table Meme
+--drop table Receiver
+--drop table Meme
 
 update Receiver
 set [Name] = 'Роман'

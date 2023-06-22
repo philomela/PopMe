@@ -8,7 +8,7 @@ public record Receiver
 
     public string? PhoneNumber { get; set; }
 
-    public DateTime? BirthDate { get; set; }
+    public DateTime? SurpriseDate { get; set; }
 
     public Meme? Meme { get; set; }
 

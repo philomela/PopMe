@@ -1,9 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
-import PresenterForm from "./PresenterForm";
-import styles from "./Presenter.module.css";
-import axios from "axios";
+import PresenterForm from "../../forms/PresenterDataForm/PresenterForm";
 
 const Presenter = () => {
   const { id } = useParams();

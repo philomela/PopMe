@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./Presenter.module.css";
+import styles from "../../screens/Presenter/Presenter.module.css";
 import axios from "axios";
 
 const PresenterForm = () => {
@@ -70,7 +70,7 @@ const PresenterForm = () => {
 
       <input
         type="datetime-local"
-        name="birthDateReceiver"
+        name="surpriseDate"
         placeholder="Дата рождения поздравителя:"
         value={formData.message}
         onChange={handleInputChange}

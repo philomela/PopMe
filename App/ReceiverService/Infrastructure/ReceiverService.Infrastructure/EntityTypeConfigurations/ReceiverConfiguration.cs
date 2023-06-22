@@ -12,9 +12,9 @@ internal class ReceiverConfiguration : IEntityTypeConfiguration<Receiver>
         builder.HasOne(p => p.Meme)
                .WithOne(m => m.Receiver)
                .HasForeignKey<Meme>(m => m.Id);
-        builder.Property(p => p.PhoneNumber);
-        builder.Property(p => p.BirthDate);
         builder.Property(p => p.Name);
+        builder.Property(p => p.PhoneNumber);
+        builder.Property(p => p.SurpriseDate);
         builder.Property(p => p.UniqKey);
     }
 }

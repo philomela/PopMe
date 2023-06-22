@@ -63,7 +63,7 @@ app.MapGet("/", () => "Presenter");
 /// Route GetPresenter - get presenter by Id.
 /// </summary>
 app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
-                                   [FromServices] IMediator mediator) =>
+                                        [FromServices] IMediator mediator) =>
 {
     return await mediator.Send(new GetPresenterQuery()
     {
