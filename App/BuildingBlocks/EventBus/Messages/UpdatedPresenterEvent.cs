@@ -7,5 +7,5 @@ public record UpdatedPresenterEvent
 
     public string? PhoneNumberReceiver { get; init; }
 
-    public DateTime? BirthDateReceiver { get; init; }
+    public DateTime? SurpriseDate { get; init; }
 }

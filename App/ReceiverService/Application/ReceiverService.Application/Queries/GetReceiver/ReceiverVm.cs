@@ -10,7 +10,7 @@ public class ReceiverVm : IMapFrom<Receiver>
 
     public string Name { get; set; }
 
-    public DateTime BirthDate { get; set; }
+    public DateTime SurpriseDate { get; set; }
 
     public string PhoneNumber { get; set; }
 
@@ -21,8 +21,8 @@ public class ReceiverVm : IMapFrom<Receiver>
             opt => opt.MapFrom(m => m.Id))
         .ForMember(vm => vm.Name,
             opt => opt.MapFrom(m => m.Name))
-        .ForMember(vm => vm.BirthDate,
-            opt => opt.MapFrom(m => m.BirthDate))
+        .ForMember(vm => vm.SurpriseDate,
+            opt => opt.MapFrom(m => m.SurpriseDate))
         .ForMember(vm => vm.PhoneNumber,
             opt => opt.MapFrom(m => m.PhoneNumber));
     }

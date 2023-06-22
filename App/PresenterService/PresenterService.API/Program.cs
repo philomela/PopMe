@@ -37,6 +37,13 @@ builder.Services.AddScoped<AdminGeneratedCodeConsumer>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -44,6 +51,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("CorsPolicy");
 }
 
 /// <summary>
@@ -81,7 +89,7 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
     {
         NameReceiver = command.NameReceiver,
         PhoneNumberReceiver = command.PhoneNumberReceiver,
-        BirthDateReceiver = command.BirthDateReceiver,
+        SurpriseDate = command.SurpriseDate,
         UniqKey = uniqKey
     }); 
     return Results.NoContent();
@@ -103,7 +111,7 @@ app.MapPut("/updatePresenterDetail/{id}", async ([FromRoute] Guid id,
     var uniqKey = await mediator.Send(command);
     await publishEndpoint.Publish(new UpdatedPresenterDetailEvent()
     {
-        TextCongratulations= command.TextCongratulations,
+        TextCongratulations = command.TextCongratulations,
         VideoId = command.VideoId,
         UniqKey = uniqKey
     });
