@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios"
 
-const index = () => {
+const Receiver = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
 
@@ -23,8 +23,9 @@ const index = () => {
         ) : (
           <p>Loading...</p>
         )}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0bIXDFVJyoE"></iframe>
       </div>
     );
   };
 
-export default index
+export default Receiver
