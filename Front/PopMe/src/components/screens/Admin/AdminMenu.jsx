@@ -11,7 +11,7 @@ const AdminMenu = ({ countPairsQrCodes, lastDateTimeCreated }) => {
         <li>
           <p>
             <b>Statistic:</b> count created <b>{countPairsQrCodes}</b>, last
-            created <b>{dayjs(lastDateTimeCreated).format("d MMM YYYY")}</b>
+            created <b>{dayjs(lastDateTimeCreated).format("DD MMM YYYY")}</b>
           </p>
         </li>
       </ul>

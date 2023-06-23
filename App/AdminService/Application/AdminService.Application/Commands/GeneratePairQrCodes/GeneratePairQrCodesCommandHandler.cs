@@ -5,14 +5,14 @@ using MediatR;
 
 namespace AdminService.Application.Commands.GeneratePairQrCodes;
 
-internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQrCodesCommand, Unit>
+internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQrCodesCommand, Guid>
 {
     private readonly IQrCodeClient<string> _qrCodeGenerator;
     private readonly IAdminDbContext _adminDbContext;
 
     public GeneratePairQrCodesCommandHandler(IQrCodeClient<string> qrCodeGenerator, IAdminDbContext adminDbContext)
         => (_qrCodeGenerator, _adminDbContext) = (qrCodeGenerator, adminDbContext);
-    public async Task<Unit> Handle(GeneratePairQrCodesCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(GeneratePairQrCodesCommand request, CancellationToken cancellationToken)
     {
         var receiverQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.ReceiverData.ToString(), cancellationToken);
         var presenterQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.PresenterData.ToString(), cancellationToken);
@@ -29,6 +29,6 @@ internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQ
 
         await _adminDbContext.SaveChangesAsync(cancellationToken);
 
-        return Unit.Value;
+        return request.Id;
     }
 }
