@@ -14,11 +14,11 @@ const Admin = () => {
       const responseInfoQrCodes = await axios.get(
         "https://localhost:53739/getInfoQrCodes"
       );
-      const responseGeneratePairQrCode = await axios.get(
+      const responseGeneratePairQrCode = await axios.post(
         "https://localhost:53739/generatePairQrCodes"
       );
       const responseGetPairQrCodes = await axios.get(
-        "https://localhost:53739/getPairQrCodes" + responseGeneratePairQrCode
+        "https://localhost:53739/getPairQrCodes/" + responseGeneratePairQrCode.data
       );
 
       setPairQrCodes(responseGetPairQrCodes.data);

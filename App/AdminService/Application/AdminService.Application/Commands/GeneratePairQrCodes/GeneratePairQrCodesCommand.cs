@@ -2,7 +2,7 @@
 
 namespace AdminService.Application.Commands.GeneratePairQrCodes;
 
-public record GeneratePairQrCodesCommand : IRequest<Unit>
+public record GeneratePairQrCodesCommand : IRequest<Guid>
 {
     public Guid Id { get; init; } = Guid.NewGuid();
 
