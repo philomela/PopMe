@@ -8,6 +8,7 @@ using EventBus.Messages;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,11 +52,11 @@ app.MapPost("/createAdmin", async ([FromServices] IMediator mediator) =>
 .WithName("CreateAdmin")
 .WithOpenApi();
 
-app.MapGet("/generatePairQrCodes", async ([FromServices] IPublishEndpoint publishEndpoint, 
+app.MapPost("/generatePairQrCodes", async ([FromServices] IPublishEndpoint publishEndpoint, 
                                           [FromServices] IMediator mediator) =>
 {
     var command = new GeneratePairQrCodesCommand();
-    await mediator.Send(command);
+    var result = await mediator.Send(command);
 
     await publishEndpoint.Publish(new AdminGeneratedCodeEvent()
     {
@@ -64,10 +65,17 @@ app.MapGet("/generatePairQrCodes", async ([FromServices] IPublishEndpoint publis
         ReceiverData = command.ReceiverData,
         UniqKey = command.UniqKey
     });
-
-    return await mediator.Send(new GetPairQrCodesQuery(command.Id));
+    return result;
 })
 .WithName("GeneratePairQrCodes")
+.WithOpenApi();
+
+app.MapGet("/getPairQrCodes/{id}", async ([FromRoute] Guid id,
+                                          [FromServices] IMediator mediator) =>
+{
+    return await mediator.Send(new GetPairQrCodesQuery(id));
+})
+.WithName("GetPairQrCodes")
 .WithOpenApi();
 
 app.MapGet("/getInfoQrCodes", async ([FromServices] IMediator mediator) =>

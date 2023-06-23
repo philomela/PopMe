@@ -17,7 +17,11 @@ const Admin = () => {
       const responseGeneratePairQrCode = await axios.get(
         "https://localhost:53739/generatePairQrCodes"
       );
-      setPairQrCodes(responseGeneratePairQrCode.data);
+      const responseGetPairQrCodes = await axios.get(
+        "https://localhost:53739/getPairQrCodes" + responseGeneratePairQrCode
+      );
+
+      setPairQrCodes(responseGetPairQrCodes.data);
 
       setCountQrCodes(responseInfoQrCodes.data.countPairsQrCodes);
       setLastQrDate(responseInfoQrCodes.data.lastDateTimeCreated);
