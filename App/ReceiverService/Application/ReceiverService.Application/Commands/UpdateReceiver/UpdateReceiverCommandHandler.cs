@@ -22,7 +22,7 @@ internal class UpdateReceiverCommandHandler : IRequestHandler<UpdateReceiverComm
 
         entity.Name = request.Name;
         entity.PhoneNumber = request.PhoneNumber;
-        entity.BirthDate = request.BirthDate;
+        entity.SurpriseDate = request.SurpriseDate;
 
         await _receiverDbContext.SaveChangesAsync(cancellationToken);
 

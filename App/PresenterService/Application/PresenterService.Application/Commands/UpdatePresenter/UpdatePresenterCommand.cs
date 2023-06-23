@@ -14,5 +14,5 @@ public record UpdatePresenterCommand : IRequest<Guid>
 
     public string? PhoneNumberReceiver { get; init; }
 
-    public DateTime? BirthDateReceiver { get; init; }
+    public DateTime? SurpriseDate { get; init; }
 }

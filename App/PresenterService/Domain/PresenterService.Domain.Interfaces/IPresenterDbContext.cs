@@ -7,7 +7,5 @@ public interface IPresenterDbContext
 {
     public DbSet<Presenter> Presenters { get; set; }
 
-    //public DbSet<Meme> Memes { get; set; }
-
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

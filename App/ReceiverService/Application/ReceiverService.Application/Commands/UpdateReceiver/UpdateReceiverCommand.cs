@@ -9,5 +9,5 @@ public record UpdateReceiverCommand : IRequest<Unit>
 
     public string? PhoneNumber { get; init; }
 
-    public DateTime? BirthDate { get; init; }
+    public DateTime? SurpriseDate { get; init; }
 }

@@ -19,7 +19,7 @@ public class UpdatedPresenterConsumer : IConsumer<UpdatedPresenterEvent>
             UniqKey = context.Message.UniqKey,
             Name = context.Message.NameReceiver,
             PhoneNumber = context.Message.PhoneNumberReceiver,
-            BirthDate = context.Message.BirthDateReceiver,
+            SurpriseDate = context.Message.SurpriseDate,
         });
 
         Console.WriteLine($"{context.Message.UniqKey}"); //Added loger
