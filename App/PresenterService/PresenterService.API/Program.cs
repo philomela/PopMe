@@ -37,6 +37,13 @@ builder.Services.AddScoped<AdminGeneratedCodeConsumer>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -44,6 +51,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("CorsPolicy");
 }
 
 /// <summary>
@@ -55,13 +63,14 @@ app.MapGet("/", () => "Presenter");
 /// Route GetPresenter - get presenter by Id.
 /// </summary>
 app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
-                                   [FromServices] IMediator mediator) =>
+                                        [FromServices] IMediator mediator) =>
 {
     return await mediator.Send(new GetPresenterQuery()
     {
         Id = id,
     });
-}).WithName("GetPresenter")
+})
+.WithName("GetPresenter")
 .WithOpenApi();
 
 /// <summary>
@@ -80,11 +89,12 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
     {
         NameReceiver = command.NameReceiver,
         PhoneNumberReceiver = command.PhoneNumberReceiver,
-        BirthDateReceiver = command.BirthDateReceiver,
+        SurpriseDate = command.SurpriseDate,
         UniqKey = uniqKey
     }); 
     return Results.NoContent();
-}).WithName("UpdatePresenter")
+})
+.WithName("UpdatePresenter")
 .WithOpenApi();
 
 /// <summary>
@@ -101,12 +111,13 @@ app.MapPut("/updatePresenterDetail/{id}", async ([FromRoute] Guid id,
     var uniqKey = await mediator.Send(command);
     await publishEndpoint.Publish(new UpdatedPresenterDetailEvent()
     {
-        TextCongratulations= command.TextCongratulations,
+        TextCongratulations = command.TextCongratulations,
         VideoId = command.VideoId,
         UniqKey = uniqKey
     });
     return Results.NoContent();
-}).WithName("UpdatePresenterDetail")
+})
+.WithName("UpdatePresenterDetail")
 .WithOpenApi();
 
 app.Run();

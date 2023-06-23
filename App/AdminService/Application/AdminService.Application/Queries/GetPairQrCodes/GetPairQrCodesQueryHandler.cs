@@ -18,7 +18,7 @@ internal class GetPairQrCodesQueryHandler : IRequestHandler<GetPairQrCodesQuery,
 
         var pairQrCodes = await connection.QuerySingleAsync<PairQrCodes>(@$"SELECT [PresenterDataBase64]
                                                                                   ,[ReceiverDataBase64]
-                                                                         FROM dbo.[PairQrCodes] WHERE Id = @Id", 
+                                                                         FROM dbo.[PairQrCodes] WITH(nolock) WHERE Id = @Id", 
                                                                          new { request.Id });
         return _mapper.Map<PairQrCodesVm>(pairQrCodes);
     }

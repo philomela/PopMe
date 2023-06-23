@@ -20,7 +20,7 @@ internal class GetReceiverQueryHandler : IRequestHandler<GetReceiverQuery, Recei
         var receiver = await connection.QuerySingleAsync<Receiver>(@$"SELECT [Id]
                                                                             ,[Name]
                                                                             ,[PhoneNumber]
-                                                                            ,[BirthDate]
+                                                                            ,[SurpriseDate]
                                                                          FROM dbo.[Receiver] WHERE Id = @Id",
                                                                          new { request.Id });
         return _mapper.Map<ReceiverVm>(receiver);

@@ -6,6 +6,8 @@ public record GeneratePairQrCodesCommand : IRequest<Unit>
 {
     public Guid Id { get; init; } = Guid.NewGuid();
 
+    public DateTime CreateDate { get; init; } = DateTime.Now;
+
     public Guid PresenterData { get; init; } = Guid.NewGuid();
 
     public Guid ReceiverData { get; init; } = Guid.NewGuid();
