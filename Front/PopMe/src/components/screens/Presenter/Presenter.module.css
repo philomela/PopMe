@@ -1,15 +1,3 @@
-.presenter_form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
 input[type="text"],
 input[type="tel"],
 input[type="datetime-local"] {

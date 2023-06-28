@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "../../screens/Presenter/Presenter.module.css";
+import { useNavigate  } from "react-router-dom";
+import styles from "./PresenterForm.module.css"
 import axios from "axios";
 
-const PresenterForm = () => {
-  const { id } = useParams();
+const PresenterForm = ({id}) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     id: id,
     name: "",
@@ -27,6 +28,7 @@ const PresenterForm = () => {
         formData
       );
       console.log(response.data);
+      navigate("/presenter/"+ id + "/memecategories");
       // здесь можно добавить логику обработки ответа от сервера
     } catch (error) {
       console.error(error);

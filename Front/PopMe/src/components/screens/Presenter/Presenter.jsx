@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import PresenterForm from "../../forms/PresenterDataForm/PresenterForm";
 
 const Presenter = () => {
-
+  const { id } = useParams();
+  
   return (
     <div>
       <p>
@@ -10,7 +11,7 @@ const Presenter = () => {
         чтобы мы могли, корректно поздравить получателя сюрприза
       </p>
       <div>
-        <PresenterForm />
+        <PresenterForm id={id}/>
       </div>
     </div>
   );
