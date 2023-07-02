@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useNavigate  } from "react-router-dom";
 import styles from "./PresenterForm.module.css"
 import axios from "axios";
@@ -18,7 +17,12 @@ const PresenterForm = ({id}) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+    const [response, setResponse] = useState({});
   };
+
+  useEffect(() => {
+    
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();

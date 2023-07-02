@@ -39,31 +39,37 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminService.Application", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminService.Infrastructure", "App\AdminService\Infrastructure\AdminService.Infrastructure\AdminService.Infrastructure.csproj", "{7A657E88-BB1D-4DD5-8522-DBBA0DF22793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresenterService.Application", "App\PresenterService\Application\PresenterService.Application\PresenterService.Application.csproj", "{B106C20C-BF0E-4923-A6ED-CE694EEFA07C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenterService.Application", "App\PresenterService\Application\PresenterService.Application\PresenterService.Application.csproj", "{B106C20C-BF0E-4923-A6ED-CE694EEFA07C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresenterService.Domain.Core", "App\PresenterService\Domain\PresenterService.Domain.Core\PresenterService.Domain.Core.csproj", "{4CE6328D-5BE7-4962-9734-AC9444F11BBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenterService.Domain.Core", "App\PresenterService\Domain\PresenterService.Domain.Core\PresenterService.Domain.Core.csproj", "{4CE6328D-5BE7-4962-9734-AC9444F11BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresenterService.Domain.Interfaces", "App\PresenterService\Domain\PresenterService.Domain.Interfaces\PresenterService.Domain.Interfaces.csproj", "{C2D92F60-0119-4FEF-B7DD-24BE20CCBCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenterService.Domain.Interfaces", "App\PresenterService\Domain\PresenterService.Domain.Interfaces\PresenterService.Domain.Interfaces.csproj", "{C2D92F60-0119-4FEF-B7DD-24BE20CCBCDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresenterService.Infrastructure", "App\PresenterService\Infrastructure\PresenterService.Infrastructure\PresenterService.Infrastructure.csproj", "{E61868A1-10E2-4C40-8069-2AA5EE03A0C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenterService.Infrastructure", "App\PresenterService\Infrastructure\PresenterService.Infrastructure\PresenterService.Infrastructure.csproj", "{E61868A1-10E2-4C40-8069-2AA5EE03A0C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverService.Application", "App\ReceiverService\Application\ReceiverService.Application\ReceiverService.Application.csproj", "{CBA89A5B-08BF-494D-8DA5-B9B3812AF581}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverService.Application", "App\ReceiverService\Application\ReceiverService.Application\ReceiverService.Application.csproj", "{CBA89A5B-08BF-494D-8DA5-B9B3812AF581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverService.Domain.Core", "App\ReceiverService\Domain\ReceiverService.Domain.Core\ReceiverService.Domain.Core.csproj", "{3ECFFF94-02D0-465E-8DC7-532707DFE3DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverService.Domain.Core", "App\ReceiverService\Domain\ReceiverService.Domain.Core\ReceiverService.Domain.Core.csproj", "{3ECFFF94-02D0-465E-8DC7-532707DFE3DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverService.Domain.Interfaces", "App\ReceiverService\Domain\ReceiverService.Domain.Interfaces\ReceiverService.Domain.Interfaces.csproj", "{EB54B619-1089-4235-9C4E-57B266E88CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverService.Domain.Interfaces", "App\ReceiverService\Domain\ReceiverService.Domain.Interfaces\ReceiverService.Domain.Interfaces.csproj", "{EB54B619-1089-4235-9C4E-57B266E88CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverService.Infrastructure", "App\ReceiverService\Infrastructure\ReceiverService.Infrastructure\ReceiverService.Infrastructure.csproj", "{50D54C80-5431-487E-B5A6-93B43A0575BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverService.Infrastructure", "App\ReceiverService\Infrastructure\ReceiverService.Infrastructure\ReceiverService.Infrastructure.csproj", "{50D54C80-5431-487E-B5A6-93B43A0575BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminService.API", "App\AdminService\AdminService.API\AdminService.API.csproj", "{C229DC50-3A9C-45B8-AFB2-765234151170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminService.API", "App\AdminService\AdminService.API\AdminService.API.csproj", "{C229DC50-3A9C-45B8-AFB2-765234151170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresenterService.API", "App\PresenterService\PresenterService.API\PresenterService.API.csproj", "{2A471073-3310-447F-91A4-2BBFE65107FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresenterService.API", "App\PresenterService\PresenterService.API\PresenterService.API.csproj", "{2A471073-3310-447F-91A4-2BBFE65107FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverService.API", "App\ReceiverService\ReceiverService.API\ReceiverService.API.csproj", "{6712C106-6812-47DD-8730-BDB04212956A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverService.API", "App\ReceiverService\ReceiverService.API\ReceiverService.API.csproj", "{6712C106-6812-47DD-8730-BDB04212956A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{2429114D-3F18-4FE4-977E-A69C8079C8B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "App\BuildingBlocks\EventBus\EventBus.csproj", "{664D8624-CB84-468D-8CFA-38187255E87C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "App\BuildingBlocks\EventBus\EventBus.csproj", "{664D8624-CB84-468D-8CFA-38187255E87C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityService", "IdentityService", "{19454027-D4AF-4940-828C-558B89F6EAE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService", "App\IdentityService\IdentityService\IdentityService.csproj", "{ADB471C5-D0DD-4916-8979-A6EA065E319E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuth", "App\BuildingBlocks\JwtAuth\JwtAuth.csproj", "{91E6E7A7-FB97-4EAD-AD21-326E04036628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +141,14 @@ Global
 		{664D8624-CB84-468D-8CFA-38187255E87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{664D8624-CB84-468D-8CFA-38187255E87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{664D8624-CB84-468D-8CFA-38187255E87C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB471C5-D0DD-4916-8979-A6EA065E319E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB471C5-D0DD-4916-8979-A6EA065E319E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB471C5-D0DD-4916-8979-A6EA065E319E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB471C5-D0DD-4916-8979-A6EA065E319E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E6E7A7-FB97-4EAD-AD21-326E04036628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E6E7A7-FB97-4EAD-AD21-326E04036628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E6E7A7-FB97-4EAD-AD21-326E04036628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E6E7A7-FB97-4EAD-AD21-326E04036628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +183,9 @@ Global
 		{6712C106-6812-47DD-8730-BDB04212956A} = {DD95D25D-095B-4FDD-842A-362B2E066B02}
 		{2429114D-3F18-4FE4-977E-A69C8079C8B1} = {35ACBB1C-B63E-4651-872C-2BC92622CD5B}
 		{664D8624-CB84-468D-8CFA-38187255E87C} = {2429114D-3F18-4FE4-977E-A69C8079C8B1}
+		{19454027-D4AF-4940-828C-558B89F6EAE9} = {35ACBB1C-B63E-4651-872C-2BC92622CD5B}
+		{ADB471C5-D0DD-4916-8979-A6EA065E319E} = {19454027-D4AF-4940-828C-558B89F6EAE9}
+		{91E6E7A7-FB97-4EAD-AD21-326E04036628} = {2429114D-3F18-4FE4-977E-A69C8079C8B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB157735-E849-4B30-B87E-43E8BDC621D6}
