@@ -1,17 +1,21 @@
 using EventBus.Common;
 using EventBus.Messages;
+using JwtAuth;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using PresenterService.API.EventBusConsumer;
 using PresenterService.Application;
 using PresenterService.Application.Commands.UpdatePresenter;
 using PresenterService.Application.Commands.UpdatePresenterDetail;
 using PresenterService.Application.Queries.GetPresenter;
 using PresenterService.Infrastructure;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var secret = builder.Configuration["Secret"] ?? throw new Exception("Secret key was not found");
 //builder.UseKestrel().UseUrls("http://localhost:5001");
 
 builder.Services.AddApplication();
@@ -37,6 +41,7 @@ builder.Services.AddScoped<AdminGeneratedCodeConsumer>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
@@ -45,7 +50,28 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader());
 });
 
+
+builder.Services.AddCustomAuthScheme(cfg =>
+{
+    //cfg.RequireHttpsMetadata = true;
+    //cfg.SaveToken = true;
+    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
+            builder.Configuration["Secret"]
+            ?? throw new Exception("Secret key was not found"))),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ValidateLifetime = false,
+        RequireExpirationTime = false
+    };
+});
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
@@ -62,13 +88,18 @@ app.MapGet("/", () => "Presenter");
 /// <summary>
 /// Route GetPresenter - get presenter by Id.
 /// </summary>
-app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
+app.MapGet("/getPresenter/{id}", [Authorize(Roles = "Presenter")] async ([FromRoute] Guid id,
                                         [FromServices] IMediator mediator) =>
 {
-    return await mediator.Send(new GetPresenterQuery()
+    var queryResult = await mediator.Send(new GetPresenterQuery()
     {
         Id = id,
     });
+
+    return queryResult is not null
+    ? Results.Ok(queryResult)
+    : Results.NoContent();
+
 })
 .WithName("GetPresenter")
 .WithOpenApi();
@@ -83,7 +114,7 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
 {
     if (id != command.Id)
         return Results.BadRequest();
-      
+
     var uniqKey = await mediator.Send(command);
     await publishEndpoint.Publish(new UpdatedPresenterEvent()
     {
@@ -91,7 +122,7 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
         PhoneNumberReceiver = command.PhoneNumberReceiver,
         SurpriseDate = command.SurpriseDate,
         UniqKey = uniqKey
-    }); 
+    });
     return Results.NoContent();
 })
 .WithName("UpdatePresenter")

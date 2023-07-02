@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\JwtAuth\JwtAuth.csproj" />
     <ProjectReference Include="..\Application\PresenterService.Application\PresenterService.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\PresenterService.Infrastructure\PresenterService.Infrastructure.csproj" />
   </ItemGroup>
