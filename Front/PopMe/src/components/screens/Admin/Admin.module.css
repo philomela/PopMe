@@ -44,10 +44,12 @@ ul {
 }
 
 .admin_screen {
+  background-color: aliceblue;
   min-width: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 .admin_menu {
