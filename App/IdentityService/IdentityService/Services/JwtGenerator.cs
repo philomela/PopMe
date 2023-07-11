@@ -21,10 +21,10 @@ internal class JwtGenerator : IJwtGenerator<AppUser>
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim("Id",user.UniqId.ToString()),
+                new Claim("Id",user.Id.ToString()),
                 new Claim(ClaimTypes.Role, "Presenter")
             }),
-            Expires = DateTime.UtcNow.AddDays(7),
+            Expires = DateTime.UtcNow.AddDays(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);

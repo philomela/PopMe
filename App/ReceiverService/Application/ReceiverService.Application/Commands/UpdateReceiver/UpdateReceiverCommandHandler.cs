@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using ReceiverService.Domain.Interfaces;
-using ReceiverService.Application.Commands.UpdateReceiver;
-using ReceiverService.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ReceiverService.Application.Commands.UpdateReceiver;

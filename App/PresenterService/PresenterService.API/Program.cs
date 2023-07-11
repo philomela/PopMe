@@ -30,7 +30,7 @@ builder.Services.AddMassTransit(config =>
     {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
-        cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataPresenterQueue, c =>
+        cfg.ReceiveEndpoint(EventBusConstants.AdminCreatedPresenterQueue, c =>
         {
             c.ConfigureConsumer<AdminGeneratedCodeConsumer>(ctx);
         });
@@ -53,7 +53,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddCustomAuthScheme(cfg =>
 {
-    //cfg.RequireHttpsMetadata = true;
+    cfg.RequireHttpsMetadata = true;
     //cfg.SaveToken = true;
     cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
     {
@@ -62,13 +62,15 @@ builder.Services.AddCustomAuthScheme(cfg =>
             ?? throw new Exception("Secret key was not found"))),
         ValidateAudience = false,
         ValidateIssuer = false,
-        ValidateLifetime = false,
-        RequireExpirationTime = false
+        ValidateLifetime = true,
+        RequireExpirationTime = true
     };
 });
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();

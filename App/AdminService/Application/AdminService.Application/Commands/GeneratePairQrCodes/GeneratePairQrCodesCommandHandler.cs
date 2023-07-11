@@ -14,8 +14,8 @@ internal class GeneratePairQrCodesCommandHandler : IRequestHandler<GeneratePairQ
         => (_qrCodeGenerator, _adminDbContext) = (qrCodeGenerator, adminDbContext);
     public async Task<Guid> Handle(GeneratePairQrCodesCommand request, CancellationToken cancellationToken)
     {
-        var receiverQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.ReceiverData.ToString(), cancellationToken);
-        var presenterQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.PresenterData.ToString(), cancellationToken);
+        var receiverQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.ReceiverData.ToString().ToUpper(), cancellationToken);
+        var presenterQrCodeBase64 = _qrCodeGenerator.GenerateQrCodeAsync(request.PresenterData.ToString().ToUpper(), cancellationToken);
 
         await _adminDbContext.PairsQrCodes.AddAsync(
             new ()

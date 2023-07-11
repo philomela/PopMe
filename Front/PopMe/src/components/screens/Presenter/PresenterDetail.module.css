@@ -1,0 +1,24 @@
+.video_wrapper {
+    background: #fff;
+    padding: 15px;
+    display: flex;
+  }
+  
+  .videos_container {
+    display: flex;
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    flex-direction: column; /* Изменение направления на вертикальное */
+  }
+  
+  .video_item {
+    margin-bottom: 10px; /* Отступ между видео элементами (по желанию) */
+    padding: 15px;
+  }
+
+  .video_item_selected {
+    padding: 30px;
+    background-color: rgb(110, 110, 110);
+    --align-items: flex-start;
+    --justify-content: left;
+  }

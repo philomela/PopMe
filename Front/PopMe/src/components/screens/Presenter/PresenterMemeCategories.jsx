@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import PresenterForm from "../../forms/PresenterDataForm/PresenterForm";
+import { Link } from 'react-router-dom';
 
 const PresenterMemeCategories = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ const PresenterMemeCategories = () => {
       <h2>Выберите категорию видео для поздравления:</h2>
       {playlists.map((playlist) => (
         <div key={playlist.id}>
-          <h3>{playlist.snippet.title}</h3>
+          <Link to={`/presenter/${id}/playlist/${playlist.id}`}>{playlist.snippet.title}</Link>
           <p>{playlist.snippet.description}</p>
         </div>
       ))}

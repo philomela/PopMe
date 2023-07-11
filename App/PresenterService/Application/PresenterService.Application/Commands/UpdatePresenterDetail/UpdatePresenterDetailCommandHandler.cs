@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using PresenterService.Application.Commands.UpdatePresenter;
 using PresenterService.Domain.Interfaces;
 
@@ -12,7 +13,9 @@ internal class UpdatePresenterDetailCommandHandler : IRequestHandler<UpdatePrese
     => _presenterDbContext = presenterDbContext;
     public async Task<Guid> Handle(UpdatePresenterDetailCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _presenterDbContext.Presenters.FindAsync(request.Id, cancellationToken);
+        var entity = await _presenterDbContext.Presenters
+                                              .Include(p => p.Meme)
+                                              .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
         if (entity is null || entity.Meme is null)
         {

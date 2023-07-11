@@ -21,8 +21,17 @@ internal class GetReceiverQueryHandler : IRequestHandler<GetReceiverQuery, Recei
                                                                             ,[Name]
                                                                             ,[PhoneNumber]
                                                                             ,[SurpriseDate]
-                                                                         FROM dbo.[Receiver] WHERE Id = @Id",
+                                                                         FROM dbo.[Receiver]
+                                                                         WHERE Id = @Id",
                                                                          new { request.Id });
+        var meme = await connection.QuerySingleAsync<Meme>(@$"SELECT [TextСongratulations]
+                                                                    ,[VideoId]
+                                                                 FROM dbo.[Meme]
+                                                                 WHERE Id = @Id",
+                                                                 new { request.Id });
+
+        receiver.Meme = meme;
+        
         return _mapper.Map<ReceiverVm>(receiver);
     }
 }

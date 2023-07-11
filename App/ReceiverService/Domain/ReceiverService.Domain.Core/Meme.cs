@@ -8,5 +8,5 @@ public record Meme
 
     public string? TextСongratulations { get; set; }
 
-    public Guid VideoId { get; set; }
+    public string VideoId { get; set; }
 }
