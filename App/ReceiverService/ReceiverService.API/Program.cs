@@ -21,7 +21,7 @@ builder.Services.AddMassTransit(config => {
     config.UsingRabbitMq((ctx, cfg) => {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
-        cfg.ReceiveEndpoint(EventBusConstants.QrCodeDataReceiverQueue, c => {
+        cfg.ReceiveEndpoint(EventBusConstants.AdminCreatedReceiverQueue, c => {
             c.ConfigureConsumer<AdminGeneratedCodeConsumer>(ctx);
         });
         cfg.ReceiveEndpoint(EventBusConstants.UpdatedPresenterQueue, c => {
@@ -48,6 +48,8 @@ builder.Services.AddMassTransit(config => {
 });
 
 var app = builder.Build();
+
+app.UseRouting();
 
 if (app.Environment.IsDevelopment())
 {

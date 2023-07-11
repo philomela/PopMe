@@ -12,6 +12,7 @@ public class AdminGeneratedCodeConsumer : IConsumer<AdminGeneratedCodeEvent>
     public AdminGeneratedCodeConsumer(IMediator mediator) => _mediator = mediator;
     public async Task Consume(ConsumeContext<AdminGeneratedCodeEvent> context)
     {
+        
         await _mediator.Send(new CreatePresenterCommand()
         {
             Id = context.Message.PresenterData,

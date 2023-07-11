@@ -1,4 +1,4 @@
-/*Admin service db*/
+Ôªø/*Admin service db*/
 USE AdminServiceDb;
 CREATE TABLE [PairQrCodes] (
 	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
@@ -24,16 +24,16 @@ GO
 
 CREATE TABLE Meme (
 	[Id] [uniqueidentifier] PRIMARY KEY NOT NULL FOREIGN KEY REFERENCES dbo.Presenter(Id),
-	Text—ongratulations [varchar](200) NULL,
-	[VideoId] [uniqueidentifier] NULL,
+	[Text–°ongratulations] [varchar](200) NULL,
+	[VideoId] [varchar](max) NULL,
 )
 GO
 
 --select * from Presenter
 --select * from Meme
 
---drop table Presenter
---drop table Meme
+drop table Presenter
+drop table Meme
 
 /*Receiver service db*/
 USE ReceiverServiceDb;
@@ -48,8 +48,8 @@ GO
 
 CREATE TABLE Meme (
 	[Id] [uniqueidentifier] PRIMARY KEY NOT NULL FOREIGN KEY REFERENCES dbo.Receiver(Id),
-	[Text—ongratulations] [varchar](200) NULL,
-	[VideoId] [uniqueidentifier] NULL,
+	[Text–°ongratulations] [varchar](200) NULL,
+	[VideoId] [varchar](max) NULL,
 )
 GO
 
@@ -60,5 +60,5 @@ GO
 --drop table Meme
 
 update Receiver
-set [Name] = '–ÓÏ‡Ì'
+set [Name] = '√ê√Æ√¨√†√≠'
 where Id = '8ABCB818-F54B-4EB7-9EC3-D9FC6CD605AD'

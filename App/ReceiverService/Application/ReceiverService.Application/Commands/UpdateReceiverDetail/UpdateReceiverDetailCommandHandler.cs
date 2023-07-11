@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ReceiverService.Application.Commands.UpdateReceiver;
 using ReceiverService.Domain.Interfaces;
 
 namespace ReceiverService.Application.Commands.UpdateReceiverDetail;
 
-internal class UpdateReceiverDetailCommandHandler
+internal class UpdateReceiverDetailCommandHandler : IRequestHandler<UpdateReceiverDetailCommand, Unit>
 {
     private readonly IReceiverDbContext _receiverDbContext;
 
@@ -12,7 +13,9 @@ internal class UpdateReceiverDetailCommandHandler
         => _receiverDbContext = receiverDbContext;
     public async Task<Unit> Handle(UpdateReceiverDetailCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _receiverDbContext.Receivers.FirstOrDefaultAsync(e => e.UniqKey == request.UniqKey, cancellationToken);
+        var entity = await _receiverDbContext.Receivers
+                                             .Include(r => r.Meme)
+                                             .FirstOrDefaultAsync(r => r.UniqKey == request.UniqKey, cancellationToken);
 
         if (entity is null || entity.Meme is null)
         {

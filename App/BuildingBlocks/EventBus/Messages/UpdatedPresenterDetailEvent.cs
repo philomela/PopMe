@@ -6,5 +6,5 @@ public record UpdatedPresenterDetailEvent // : IntegrationBaseEvent
 
     public string? TextCongratulations { get; init; }
 
-    public Guid VideoId { get; init; }
+    public string VideoId { get; init; }
 }
