@@ -4,5 +4,5 @@ namespace IdentityService.Models;
 
 public class AppUser : IdentityUser
 {
-    public Guid UniqId { get; set; }
+    public Guid UniqKey { get; set; }
 }

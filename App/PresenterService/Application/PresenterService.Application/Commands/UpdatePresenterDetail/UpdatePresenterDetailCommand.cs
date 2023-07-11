@@ -8,5 +8,5 @@ public record UpdatePresenterDetailCommand : IRequest<Guid>
 
     public string? TextCongratulations { get; init; }
 
-    public Guid VideoId { get; init; }
+    public string VideoId { get; init; }
 }

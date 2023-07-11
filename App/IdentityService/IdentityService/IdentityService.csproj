@@ -28,11 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Consumers\" />
+    <Folder Include="Consumers\EventBusConsumer\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\JwtAuth\JwtAuth.csproj" />
   </ItemGroup>
 

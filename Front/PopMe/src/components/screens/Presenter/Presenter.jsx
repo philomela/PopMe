@@ -18,8 +18,16 @@ const Presenter = () => {
           var response;
 
           try {
+            // Получение токена из локального хранилища
+            const token = localStorage.getItem("token");
+
+            // Добавление токена к заголовкам запроса
+            const config = {
+              headers: { Authorization: `Bearer ${token}` }
+            };
             response = await axios.get(
-              `https://localhost:53746/getPresenter/` + id
+              `https://localhost:5010/getPresenter/` + id.toUpperCase(),
+              config
             );
 
             if (response.status === 204) {

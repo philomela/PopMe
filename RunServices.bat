@@ -1,0 +1,1 @@
+dotnet run App/PresenterService/Presenter.API/PresenterService.API.csproj
