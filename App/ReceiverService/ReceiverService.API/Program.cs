@@ -54,7 +54,11 @@ app.UseRouting();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Receiver API V1");
+        c.RoutePrefix = string.Empty;
+    });
     app.UseCors("CorsPolicy");
 }
 

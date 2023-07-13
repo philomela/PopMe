@@ -1,0 +1,17 @@
+.horizontal_menu {
+  border-bottom: 1px solid white;
+  color: #2424;
+}
+
+.menu_item {
+  display: inline-block;
+  color: #2424;
+}
+
+.item_link {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}

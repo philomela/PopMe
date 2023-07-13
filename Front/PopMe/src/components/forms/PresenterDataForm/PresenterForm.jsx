@@ -61,7 +61,7 @@ const PresenterForm = ({id}) => {
       <input
         type="tel"
         name="phoneNumber"
-        placeholder="Оставьте нам Ваш контактный номер телефона"
+        placeholder="Ваш номер телефона"
         value={formData.message}
         onChange={handleInputChange}
       />
@@ -69,20 +69,20 @@ const PresenterForm = ({id}) => {
       <input
         type="tel"
         name="phoneNumberReceiver"
-        placeholder="Оставьте нам контактный номер телефона, человека которого вы хотите удивить:"
+        placeholder="Номер телефона, человека которого хотите удивить"
         value={formData.message}
         onChange={handleInputChange}
       />
 
       <input
-        type="datetime-local"
+        type="date"
         name="surpriseDate"
-        placeholder="Дата рождения поздравителя:"
+        placeholder="Дата сюрприза"
         value={formData.message}
         onChange={handleInputChange}
       />
 
-      <button type="submit">Send</button>
+      <button type="submit">Продолжить</button>
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { isUUID } from "validator";
+import styles from "./Presenter.module.css"
 import PresenterForm from "../../forms/PresenterDataForm/PresenterForm";
 
 const Presenter = () => {
@@ -58,10 +59,13 @@ const Presenter = () => {
     <div>
       {!isLoading ? (
         <>
-          <p>
-            Привет, ты попал на страницу оформления подарка, заполни данные
-            ниже, чтобы мы могли корректно поздравить получателя сюрприза
-          </p>
+          <h1>
+            Шаг 1
+          </h1>
+          <h2>
+            Привет! <br/>Ты попал на страницу оформления подарка. <br/> Заполни данные
+            ниже, чтобы мы могли корректно поздравить получателя сюрприза.
+          </h2>
 
           <div>
             <PresenterForm id={id} />

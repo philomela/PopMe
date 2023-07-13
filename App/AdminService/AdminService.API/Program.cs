@@ -38,7 +38,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Admin API V1");
+        c.RoutePrefix = string.Empty;
+    }
+    );
     app.UseCors("CorsPolicy");
 }
 
@@ -52,7 +57,7 @@ app.MapPost("/createAdmin", async ([FromServices] IMediator mediator) =>
 .WithName("CreateAdmin")
 .WithOpenApi();
 
-app.MapPost("/generatePairQrCodes", async ([FromServices] IPublishEndpoint publishEndpoint, 
+app.MapPost("/generatePairQrCodes", async ([FromServices] IPublishEndpoint publishEndpoint,
                                           [FromServices] IMediator mediator) =>
 {
     var command = new GeneratePairQrCodesCommand();

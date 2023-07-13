@@ -8,10 +8,12 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PresenterMemeCategories from "./components/screens/Presenter/PresenterMemeCategories";
 import PresenterDetail from "./components/screens/Presenter/PresenterDetail";
+import HorizontalMenu from "./components/ui/HorizontalMenu/HorizontalMenu"
 
 const App = () => {
   return (
     <Router>
+      <HorizontalMenu/>
       <Routes>
         <Route path="/admin" element={<Admin />} />
 
