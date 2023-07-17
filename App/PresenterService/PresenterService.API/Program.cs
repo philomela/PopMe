@@ -16,7 +16,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var secret = builder.Configuration["Secret"] ?? throw new Exception("Secret key was not found");
-//builder.UseKestrel().UseUrls("http://localhost:5001");
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -50,11 +49,11 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader());
 });
 
+builder.Services.AddPolicyAuthorization();
 
 builder.Services.AddCustomAuthScheme(cfg =>
 {
     cfg.RequireHttpsMetadata = true;
-    //cfg.SaveToken = true;
     cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
     {
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
@@ -66,13 +65,10 @@ builder.Services.AddCustomAuthScheme(cfg =>
         RequireExpirationTime = true
     };
 });
-builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
 app.UseRouting();
-
-app.UseAuthentication();
 app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
@@ -94,7 +90,7 @@ app.MapGet("/", () => "Presenter");
 /// <summary>
 /// Route GetPresenter - get presenter by Id.
 /// </summary>
-app.MapGet("/getPresenter/{id}", [Authorize(Roles = "Presenter")] async ([FromRoute] Guid id,
+app.MapGet("/getPresenter/{id}", async ([FromRoute] Guid id,
                                         [FromServices] IMediator mediator) =>
 {
     var queryResult = await mediator.Send(new GetPresenterQuery()
@@ -105,8 +101,7 @@ app.MapGet("/getPresenter/{id}", [Authorize(Roles = "Presenter")] async ([FromRo
     return queryResult is not null
     ? Results.Ok(queryResult)
     : Results.NoContent();
-
-})
+}).RequireAuthorization("UserIdPolicy")
 .WithName("GetPresenter")
 .WithOpenApi();
 
@@ -130,7 +125,7 @@ app.MapPut("/updatePresenter/{id}", async ([FromRoute] Guid id,
         UniqKey = uniqKey
     });
     return Results.NoContent();
-})
+}).RequireAuthorization("UserIdPolicy")
 .WithName("UpdatePresenter")
 .WithOpenApi();
 
@@ -153,7 +148,7 @@ app.MapPut("/updatePresenterDetail/{id}", async ([FromRoute] Guid id,
         UniqKey = uniqKey
     });
     return Results.NoContent();
-})
+}).RequireAuthorization("UserIdPolicy")
 .WithName("UpdatePresenterDetail")
 .WithOpenApi();
 

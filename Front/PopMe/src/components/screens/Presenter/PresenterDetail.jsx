@@ -44,6 +44,7 @@ const PresenterDetail = () => {
 
   return (
     <div>
+      <h1>Шаг 3</h1>
       <h2>Выберите видео для поздравления:</h2>
       <div className={styles.videos_wrapper}>
         <div className={styles.video_item}>

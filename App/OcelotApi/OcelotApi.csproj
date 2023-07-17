@@ -18,8 +18,4 @@
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="19.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BuildingBlocks\JwtAuth\JwtAuth.csproj" />
-  </ItemGroup>
-
 </Project>

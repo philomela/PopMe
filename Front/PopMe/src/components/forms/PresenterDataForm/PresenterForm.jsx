@@ -53,7 +53,7 @@ const PresenterForm = ({id}) => {
       <input
         type="text"
         name="nameReceiver"
-        placeholder="Как зовут человека, которого Вы хотите удивить?"
+        placeholder="Как зовут получателя?"
         value={formData.email}
         onChange={handleInputChange}
       />
@@ -69,7 +69,7 @@ const PresenterForm = ({id}) => {
       <input
         type="tel"
         name="phoneNumberReceiver"
-        placeholder="Номер телефона, человека которого хотите удивить"
+        placeholder="Номер телефона получателя"
         value={formData.message}
         onChange={handleInputChange}
       />

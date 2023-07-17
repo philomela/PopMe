@@ -2,7 +2,8 @@ import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import styles from "./PresenterMemeCategories.module.css";
 
 const PresenterMemeCategories = () => {
   const { id } = useParams();
@@ -24,10 +25,13 @@ const PresenterMemeCategories = () => {
 
   return (
     <div>
-      <h2>Выберите категорию видео для поздравления:</h2>
+      <h1>Шаг 2</h1>
+      <h2>Выберите категорию видео для поздравления</h2>
       {playlists.map((playlist) => (
         <div key={playlist.id}>
-          <Link to={`/presenter/${id}/playlist/${playlist.id}`}>{playlist.snippet.title}</Link>
+          <Link className={styles.category} to={`/presenter/${id}/playlist/${playlist.id}`}>
+            {playlist.snippet.title}
+          </Link>
           <p>{playlist.snippet.description}</p>
         </div>
       ))}
